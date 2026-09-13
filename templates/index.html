@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarization | Praveen Kumar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <p class="eyebrow">NLP • TRANSFORMERS • HUGGING FACE</p>
+            <h1>Text Summarization</h1>
+            <p class="subtitle">
+                Turn long articles into concise summaries using a BART Transformer model.
+            </p>
+        </section>
+
+        <section class="card">
+            <form method="POST">
+                <label for="article">Article</label>
+                <textarea id="article" name="article"
+                    placeholder="Paste a long article here..." required>{{ article }}</textarea>
+                <button type="submit">Summarize Article</button>
+            </form>
+
+            {% if error %}
+            <div class="message error">{{ error }}</div>
+            {% endif %}
+        </section>
+
+        {% if summary %}
+        <section class="card result">
+            <div class="result-header">
+                <div>
+                    <p class="eyebrow">GENERATED SUMMARY</p>
+                    <h2>Summary</h2>
+                </div>
+                <div class="stats">
+                    <span>Original: {{ article.split()|length }} words</span>
+                    <span>Summary: {{ summary.split()|length }} words</span>
+                </div>
+            </div>
+            <p class="summary-text">{{ summary }}</p>
+        </section>
+        {% endif %}
+
+        <footer>
+            <p><strong>Praveen Kumar</strong> — Data Scientist | Open Source Learner | IBM Certified</p>
+            <div class="links">
+                <a href="https://github.com/InfinitePraveen" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/infinitepraveen/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
